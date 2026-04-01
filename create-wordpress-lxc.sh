@@ -417,6 +417,9 @@ pct create "$CT_ID" "${TEMPLATE_STORAGE}:vztmpl/${TEMPLATE_NAME}" \
 
 success "$L_LXC_OK"
 
+# vm.overcommit_memory für Redis in LXC-Config setzen (unprivilegierter Container kann sysctl nicht selbst setzen)
+echo "lxc.sysctl.vm.overcommit_memory = 1" >> /etc/pve/lxc/${CT_ID}.conf
+
 # Container starten und auf Boot warten
 info "$L_LXC_STARTING"
 pct start "$CT_ID"
@@ -462,7 +465,7 @@ pct exec "$CT_ID" -- bash -c \
   "DEBIAN_FRONTEND=noninteractive LANG=C LC_ALL=C apt-get update -qq && \
    DEBIAN_FRONTEND=noninteractive LANG=C LC_ALL=C apt-get install -y -qq curl ca-certificates locales && \
    locale-gen en_US.UTF-8 && \
-   printf 'LANG=en_US.UTF-8\nLC_ALL=en_US.UTF-8\n' > /etc/default/locale"
+   update-locale LANG=en_US.UTF-8"
 
 # Script in den Container laden
 pct exec "$CT_ID" -- bash -c \
@@ -474,7 +477,7 @@ CMD="bash /tmp/install-wp.sh"
 for _flag in "${WP_FLAGS[@]}"; do
   CMD+=" $(printf '%q' "$_flag")"
 done
-pct exec "$CT_ID" -- bash -c "export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin; $CMD"
+pct exec "$CT_ID" -- bash -c "export LANG=en_US.UTF-8 PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin; $CMD"
 
 # =============================================================================
 # ZUGANGSDATEN AUF PROXMOX-HOST KOPIEREN
