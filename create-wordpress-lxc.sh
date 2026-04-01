@@ -474,7 +474,7 @@ CMD="bash /tmp/install-wp.sh"
 for _flag in "${WP_FLAGS[@]}"; do
   CMD+=" $(printf '%q' "$_flag")"
 done
-pct exec "$CT_ID" -- bash -c "export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8; $CMD"
+pct exec "$CT_ID" -- bash -c "export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin; $CMD"
 
 # =============================================================================
 # ZUGANGSDATEN AUF PROXMOX-HOST KOPIEREN
