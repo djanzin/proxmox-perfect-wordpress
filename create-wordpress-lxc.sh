@@ -460,7 +460,7 @@ WP_FLAGS=(
 # Host-LANG aufruft und fehlschlägt — Locale erst nach der Installation konfigurieren
 pct exec "$CT_ID" -- bash -c \
   "DEBIAN_FRONTEND=noninteractive LANG=C LC_ALL=C apt-get update -qq && \
-   DEBIAN_FRONTEND=noninteractive LANG=C LC_ALL=C apt-get install -y -qq curl ca-certificates locales && \
+   DEBIAN_FRONTEND=noninteractive LANG=C LC_ALL=C apt-get install -y -qq curl ca-certificates locales sudo && \
    sed -i 's/^# *en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
    locale-gen && \
    echo 'LANG=en_US.UTF-8' > /etc/default/locale"
