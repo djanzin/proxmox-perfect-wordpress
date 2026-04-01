@@ -467,6 +467,14 @@ pct exec "$CT_ID" -- bash -c \
    locale-gen en_US.UTF-8 && \
    echo 'LANG=en_US.UTF-8' > /etc/default/locale"
 
+# Redis vorab installieren und starten — deb-systemd-invoke kann systemctl in pct exec nicht
+# aufrufen, weshalb Redis im apt-Postinst nicht startet und später als "attempted too often" scheitert.
+# Ist Redis bereits aktiv, überspringt install-wordpress.sh den Start und findet ihn laufend vor.
+pct exec "$CT_ID" -- bash -c \
+  "DEBIAN_FRONTEND=noninteractive LANG=C LC_ALL=C apt-get install -y -qq redis-server && \
+   systemctl reset-failed redis-server.service 2>/dev/null || true && \
+   systemctl start redis-server.service"
+
 # Script in den Container laden
 pct exec "$CT_ID" -- bash -c \
   "curl -fsSL https://raw.githubusercontent.com/djanzin/perfect-wordpress/main/install-wordpress.sh -o /tmp/install-wp.sh && chmod +x /tmp/install-wp.sh"
