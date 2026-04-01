@@ -418,7 +418,7 @@ pct create "$CT_ID" "${TEMPLATE_STORAGE}:vztmpl/${TEMPLATE_NAME}" \
 success "$L_LXC_OK"
 
 # vm.overcommit_memory für Redis in LXC-Config setzen (unprivilegierter Container kann sysctl nicht selbst setzen)
-echo "lxc.sysctl.vm.overcommit_memory = 1" >> /etc/pve/lxc/${CT_ID}.conf
+echo "lxc.sysctl.vm.overcommit_memory: 1" >> /etc/pve/lxc/${CT_ID}.conf
 
 # Container starten und auf Boot warten
 info "$L_LXC_STARTING"
@@ -465,7 +465,7 @@ pct exec "$CT_ID" -- bash -c \
   "DEBIAN_FRONTEND=noninteractive LANG=C LC_ALL=C apt-get update -qq && \
    DEBIAN_FRONTEND=noninteractive LANG=C LC_ALL=C apt-get install -y -qq curl ca-certificates locales && \
    locale-gen en_US.UTF-8 && \
-   update-locale LANG=en_US.UTF-8"
+   echo 'LANG=en_US.UTF-8' > /etc/default/locale"
 
 # Script in den Container laden
 pct exec "$CT_ID" -- bash -c \
