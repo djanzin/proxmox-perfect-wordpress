@@ -14,7 +14,7 @@ One script to create a Proxmox LXC container and install a production-ready Word
 
 ### What it does
 
-A single bash script that runs on your **Proxmox VE host**, creates an unprivileged LXC container (Ubuntu 24.04 LTS or Debian 13 Trixie), and automatically installs a hardened, high-performance WordPress site inside it using [djanzin/perfect-wordpress](https://github.com/djanzin/perfect-wordpress).
+A single bash script that runs on your **Proxmox VE host**, creates an unprivileged LXC container (Ubuntu 24.04 LTS or Debian 13 Trixie), and automatically installs a hardened, high-performance WordPress site inside it using [greecro/perfect-wordpress](https://github.com/greecro/perfect-wordpress).
 
 Everything is configured interactively — no manual editing required.
 
@@ -29,7 +29,7 @@ Everything is configured interactively — no manual editing required.
 Run this **on your Proxmox host**:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/djanzin/proxmox-perfect-wordpress/main/create-wordpress-lxc.sh -o /tmp/create-wp-lxc.sh && bash /tmp/create-wp-lxc.sh
+curl -fsSL https://raw.githubusercontent.com/greecro/proxmox-perfect-wordpress/main/create-wordpress-lxc.sh -o /tmp/create-wp-lxc.sh && bash /tmp/create-wp-lxc.sh
 ```
 
 ### What the script asks for
@@ -91,7 +91,7 @@ Access your site:
 
 ### Based on
 
-This script uses [djanzin/perfect-wordpress](https://github.com/djanzin/perfect-wordpress) for the WordPress installation inside the container.
+This script uses [greecro/perfect-wordpress](https://github.com/greecro/perfect-wordpress) for the WordPress installation inside the container.
 
 <a href="https://www.buymeacoffee.com/djanzin"><img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&slug=djanzin&button_colour=00354d&font_colour=ffffff&font_family=Cookie&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
 
@@ -101,7 +101,7 @@ This script uses [djanzin/perfect-wordpress](https://github.com/djanzin/perfect-
 
 ### Was es macht
 
-Ein einzelnes Bash-Script, das auf dem **Proxmox VE Host** ausgeführt wird, einen unprivilegierten LXC Container (Ubuntu 24.04 LTS oder Debian 13 Trixie) erstellt und darin automatisch eine abgesicherte, leistungsstarke WordPress-Website installiert — basierend auf [djanzin/perfect-wordpress](https://github.com/djanzin/perfect-wordpress).
+Ein einzelnes Bash-Script, das auf dem **Proxmox VE Host** ausgeführt wird, einen unprivilegierten LXC Container (Ubuntu 24.04 LTS oder Debian 13 Trixie) erstellt und darin automatisch eine abgesicherte, leistungsstarke WordPress-Website installiert — basierend auf [greecro/perfect-wordpress](https://github.com/greecro/perfect-wordpress).
 
 Alles wird interaktiv konfiguriert — kein manuelles Editieren nötig.
 
@@ -116,7 +116,7 @@ Alles wird interaktiv konfiguriert — kein manuelles Editieren nötig.
 Diesen Befehl **auf dem Proxmox-Host** ausführen:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/djanzin/proxmox-perfect-wordpress/main/create-wordpress-lxc.sh -o /tmp/create-wp-lxc.sh && bash /tmp/create-wp-lxc.sh
+curl -fsSL https://raw.githubusercontent.com/greecro/proxmox-perfect-wordpress/main/create-wordpress-lxc.sh -o /tmp/create-wp-lxc.sh && bash /tmp/create-wp-lxc.sh
 ```
 
 ### Was das Script abfragt
@@ -178,7 +178,7 @@ Website aufrufen:
 
 ### Basiert auf
 
-Dieses Script verwendet [djanzin/perfect-wordpress](https://github.com/djanzin/perfect-wordpress) für die WordPress-Installation im Container.
+Dieses Script verwendet [greecro/perfect-wordpress](https://github.com/greecro/perfect-wordpress) für die WordPress-Installation im Container.
 
 <a href="https://www.buymeacoffee.com/djanzin"><img src="https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=%E2%98%95&slug=djanzin&button_colour=00354d&font_colour=ffffff&font_family=Cookie&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
 

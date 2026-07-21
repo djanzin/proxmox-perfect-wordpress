@@ -2,7 +2,7 @@
 # =============================================================================
 #  WordPress LXC Creator for Proxmox VE
 #  Creates an unprivileged LXC (Ubuntu 24.04 or Debian 13) and installs
-#  WordPress inside it using djanzin/perfect-wordpress
+#  WordPress inside it using greecro/perfect-wordpress
 # =============================================================================
 # Usage:
 #   bash create-wordpress-lxc.sh
@@ -467,7 +467,7 @@ pct exec "$CT_ID" -- bash -c \
 
 # Script in den Container laden
 pct exec "$CT_ID" -- bash -c \
-  "curl -fsSL https://raw.githubusercontent.com/djanzin/perfect-wordpress/main/install-wordpress.sh -o /tmp/install-wp.sh && chmod +x /tmp/install-wp.sh"
+  "curl -fsSL https://raw.githubusercontent.com/greecro/perfect-wordpress/main/install-wordpress.sh -o /tmp/install-wp.sh && chmod +x /tmp/install-wp.sh"
 
 # WordPress installieren
 # systemd-run führt den Install-Script als transiente systemd-Unit aus — dadurch hat der Prozess
